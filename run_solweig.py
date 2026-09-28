@@ -1,7 +1,8 @@
 import time
 from solweig_light import RuntimeOptions, runtime_options, thermal_comfort
+from pathlib import Path
 
-SCENE = "/Users/sunghosynn/Documents/Code/SolweigLight/solweig_scene_small"
+SCENE = str(Path(__file__).resolve().parent / "solweig_scene_small")
 
 t0 = time.perf_counter()
 with runtime_options(RuntimeOptions(
