@@ -56,3 +56,6 @@ development/reports/characterization/local_cpu_optimization_v1/e0/admission/vege
 development/optimization_v8_native_default/evidence/profile/work/
 development/experiments/optimization_v8/native/stage/**/*.dylib
 development/experiments/optimization_v8/packaging/stage/**/*.dylib
+
+# make_small_scene.py 기본 출력 폴더 (잘린 장면 + 실행 결과)
+solweig_scene_small/

@@ -12,6 +12,7 @@ Landcover.tif)으로 저장되고, 기상 파일(ownmet_Forcing_data.txt)은 복
 import argparse
 import shutil
 import sys
+import time
 from pathlib import Path
 
 from osgeo import gdal
@@ -81,6 +82,7 @@ def run(out: Path, date: str, size: int, memory_gb: float, threads: int) -> None
         threads_per_worker=threads,
         block_pixels=1024,
     )
+    t0 = time.perf_counter()
     with runtime_options(options):
         thermal_comfort(
             base_path=str(out),
@@ -93,7 +95,9 @@ def run(out: Path, date: str, size: int, memory_gb: float, threads: int) -> None
             overlap=0,
             save_tmrt=True,
         )
+    elapsed = time.perf_counter() - t0
     print(f"[DONE] 결과: {out / 'output_folder'}")
+    print(f"[TIME] thermal_comfort 걸린 시간: {elapsed/60:.1f}분 ({elapsed:.0f}초)")
 
 
 def main():
